@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Booking Landing Page</title>
+
+<style>
+/* ---------------- ROOT THEMES ---------------- */
+:root {
+    --bg: #071233;
+    --panel: #0b1833;
+    --text: #f6f7fb;
+    --muted: #b9c0d9;
+    --accent: #ff6b5f;
+    --accent-2: #ff9b86;
+    --glass: rgba(255,255,255,0.05);
+}
+
+/* Light Mode */
+body.light {
+    --bg: #ffffff;
+    --panel: #f2f2f2;
+    --text: #1a1a1a;
+    --muted: #555;
+    --glass: rgba(0,0,0,0.07);
+}
+
+/* ---------------- GLOBAL ---------------- */
+* {
+    box-sizing: border-box;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1200px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    padding: 14px 25px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-2);
+}
+
+.search-bar input {
+    width: 260px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: var(--panel);
+    color: var(--text);
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--panel);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--muted);
+    color: var(--text);
+    background: transparent;
+    cursor: pointer;
+}
+
+.signup {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border: none;
+    color: white;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+    margin-top: 180px;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.hero p {
+    max-width: 520px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.hero button {
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    padding: 14px 30px;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+    background: linear-gradient(135deg, #323232, #000000);
+    color: #fff;
+    padding: 50px 60px 20px;
+    border-radius: 18px;
+    max-width: 1100px;
+    margin: 80px auto 40px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.8fr;
+    gap: 40px;
+}
+
+.footer-left p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.socials a {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+}
+
+.top-btn {
+    margin-top: 20px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.footer-right {
+    text-align: right;
+ margin-left: 15px;
+
+}
+
+.footer-right img {
+    max-width: 120px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body class="light">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="brand">
+        <div class="logo">FB</div>
+        <div>
+            <strong>FoodBook</strong><br>
+            <small style="color:var(--muted)">Reserve your table</small>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div style="display:flex; gap:10px; align-items:center">
+        <div class="search-bar">
+            <input type="text" placeholder="Search restaurants...">
+        </div>
+
+        <div class="toggle-btn" onclick="toggleTheme()">
+            <span id="themeIcon">☀️</span>
+        </div>
+
+        <button class="btn signup" >Sign up</button>
+        <button class="btn">Login</button>
+    </div>
+</div>
+
+<!-- HERO SECTIONS -->
+<!-- HERO SECTION WITH VIDEO BACKGROUND -->
+<div class="hero">
+    <!-- Video Background -->
+    <video autoplay muted loop class="hero-video">
+        <source src="https://youtu.be/cdKx1Zv3YKs?si=bbqDKJGY1T7z9lur" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Overlay for darkening video so text is readable -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>Book Your Favorite Restaurant Online</h1>
+        <p>Fast, simple, and secure reservations at the best restaurants around you.</p>
+        <button>Reserve Now</button>
+    </div>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Cards UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Card 1 -->
+    <div class="card">
+        <div class="price">£15</div>
+        <img src="https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=" alt="Desk Lamp">
+        <div class="card-content">
+            <p class="category">ACCESSORIES</p>
+            <h2>DESK<br>LAMP</h2>
+            <p class="desc">
+                You can easily direct the light where you want it because
+                the lamp arm and head are adjustable.
+            </p>
+            <button onclick="addToCart('Desk Lamp')">ADD TO SHOPPING BAG</button>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+        <div class="price">£10</div>
+        <img src="https://t3.ftcdn.net/jpg/03/24/72/72/360_F_324727233_GwGkDp3eOeEIETimy5wbSp2983GLrkwy.jpg" alt="Desk Tidy">
+        <div class="card-content">
+            <p class="category">ACCESSORIES</p>
+            <h2>DESK<br>TIDY</h2>
+            <p class="desc">
+                Helps you to keep your desk clear from small things
+                such as pens, rulers, mobile phone and USBs.
+            </p>
+            <button onclick="addToCart('Desk Tidy')">ADD TO SHOPPING BAG</button>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+        <div class="price">£11</div>
+        <img src="https://media.onyx-hospitality.com/-/media/project/common/thumb-hotels/default/amari/amari-vientiane.jpg?h=800&iar=0&w=800&rev=bee6ff03c4b74ed68e06f8b27c59b331&hash=7FC2863C40B3C8AC86A06349BBE74C91" alt="Artificial Plant">
+        <div class="card-content">
+            <p class="category">ACCESSORIES</p>
+            <h2>ARTIFIC<br>PLANT</h2>
+            <p class="desc">
+                Lifelike artificial plant that remains just as fresh-looking
+                year after year.
+            </p>
+            <button onclick="addToCart('Artificial Plant')">ADD TO SHOPPING BAG</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-left">
+            <h2>Foodora Hub</h2>
+            <p>Empowering physicians with advanced medical tools.</p>
+            <div class="socials">
+                <a href="#">X</a>
+                <a href="#">in</a>
+                <a href="#">▶</a>
+            </div>
+            <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+        </div>
+
+        <div class="footer-links">
+            <div>
+                <h4>Site Map</h4>
+                <a href="#">Homepage</a>
+                <a href="#">Technology</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/60/University_of_Moratuwa_logo.png" alt="University Logo">
+            <p>University of MORATUWA</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 ATARAXIS. All rights reserved.
+    </div>
+</footer>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("light");
+    document.getElementById("themeIcon").textContent =
+        document.body.classList.contains("light") ? "☀️" : "🌙";
+}
+</script>
+<style>
+    /* VIDEO HERO */
+.hero {
+    position: relative;
+    margin-top: 170px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: #fff; /* default white for dark background */
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* dark overlay for readability */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #ddd; /* light muted text */
+    margin-bottom: 25px;
+}
+
+.hero-content button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    padding: 14px 30px;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding: 60px;
+}
+
+.card {
+    background: #fff;
+    width: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.price {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ea1717;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.card-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.category {
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.card-content h2 {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.desc {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+button:hover {
+    background: #333;
+}
+
+</style>
+
+<script>
+    function addToCart(productName) {
+    alert(productName + " added to shopping bag!");
+}
+
+    </script>
+</body>
+</html>
